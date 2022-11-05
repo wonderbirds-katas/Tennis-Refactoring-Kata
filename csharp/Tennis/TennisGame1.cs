@@ -65,10 +65,10 @@ namespace Tennis
             return scoreString;
         }
 
-        private static string ScoreAsString(int tempScore)
+        private static string ScoreAsString(int score)
         {
             var result = "";
-            switch (tempScore)
+            switch (score)
             {
                 case 0:
                     result = "Love";
