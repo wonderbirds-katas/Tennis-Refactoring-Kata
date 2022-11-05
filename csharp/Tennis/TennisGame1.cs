@@ -25,24 +25,12 @@ namespace Tennis
         {
             string scoreString = "";
             var tempScore = 0;
-            if (m_score1 == m_score2 && m_score1 > 2)
-            {
-                scoreString = "Deuce";
-            }
-            else if (m_score1 == m_score2)
-            {
-                scoreString = ScoreAsString(m_score1) + "-" + "All";
-            }
-            else if (m_score1 >= 4 || m_score2 >= 4)
-            {
-                scoreString = AdvantageOrWinnerAsString();
-            }
-            else
-            {
-                scoreString = ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
-            }
 
-            return scoreString;
+            if (m_score1 == m_score2 && m_score1 > 2) return "Deuce";
+            if (m_score1 == m_score2) return ScoreAsString(m_score1) + "-" + "All";
+            if (m_score1 >= 4 || m_score2 >= 4) return AdvantageOrWinnerAsString();
+
+            return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
         }
 
         private string AdvantageOrWinnerAsString()
