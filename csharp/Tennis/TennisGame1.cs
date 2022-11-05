@@ -48,9 +48,8 @@ namespace Tennis
             return scoreString;
         }
 
-        private static string ScoreAsString(int score)
-        {
-            return score switch
+        private static string ScoreAsString(int score) =>
+            score switch
             {
                 0 => "Love",
                 1 => "Fifteen",
@@ -58,6 +57,5 @@ namespace Tennis
                 3 => "Forty",
                 _ => ""
             };
-        }
     }
 }
