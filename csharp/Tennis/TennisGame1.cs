@@ -59,7 +59,7 @@ namespace Tennis
                     if (i == 1) tempScore = m_score1;
                     else { score += "-"; tempScore = m_score2; }
 
-                    score = ScoreAsString(tempScore, score);
+                    score += ScoreAsString(tempScore, score);
                 }
             }
             return score;
@@ -84,7 +84,7 @@ namespace Tennis
                     break;
             }
 
-            return score + result;
+            return result;
         }
     }
 }
