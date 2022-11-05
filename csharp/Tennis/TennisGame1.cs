@@ -35,17 +35,24 @@ namespace Tennis
             }
             else if (m_score1 >= 4 || m_score2 >= 4)
             {
-                var minusResult = m_score1 - m_score2;
-                if (minusResult == 1) scoreString = "Advantage player1";
-                else if (minusResult == -1) scoreString = "Advantage player2";
-                else if (minusResult >= 2) scoreString = "Win for player1";
-                else scoreString = "Win for player2";
+                scoreString = AdvantageOrWinnerAsString();
             }
             else
             {
                 scoreString = ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
             }
 
+            return scoreString;
+        }
+
+        private string AdvantageOrWinnerAsString()
+        {
+            string scoreString;
+            var minusResult = m_score1 - m_score2;
+            if (minusResult == 1) scoreString = "Advantage player1";
+            else if (minusResult == -1) scoreString = "Advantage player2";
+            else if (minusResult >= 2) scoreString = "Win for player1";
+            else scoreString = "Win for player2";
             return scoreString;
         }
 
