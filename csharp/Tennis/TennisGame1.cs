@@ -59,13 +59,13 @@ namespace Tennis
                     if (i == 1) tempScore = m_score1;
                     else { score += "-"; tempScore = m_score2; }
 
-                    score += ScoreAsString(tempScore, score);
+                    score += ScoreAsString(tempScore);
                 }
             }
             return score;
         }
 
-        private static string ScoreAsString(int tempScore, string score)
+        private static string ScoreAsString(int tempScore)
         {
             var result = "";
             switch (tempScore)
