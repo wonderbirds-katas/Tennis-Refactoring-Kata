@@ -67,23 +67,24 @@ namespace Tennis
 
         private static string ScoreAsString(int tempScore, string score)
         {
+            var result = "";
             switch (tempScore)
             {
                 case 0:
-                    score += "Love";
+                    result = "Love";
                     break;
                 case 1:
-                    score += "Fifteen";
+                    result = "Fifteen";
                     break;
                 case 2:
-                    score += "Thirty";
+                    result = "Thirty";
                     break;
                 case 3:
-                    score += "Forty";
+                    result = "Forty";
                     break;
             }
 
-            return score;
+            return score + result;
         }
     }
 }
