@@ -27,6 +27,10 @@ namespace Tennis
             var tempScore = 0;
             if (m_score1 == m_score2)
             {
+                if (m_score1 > 2)
+                {
+                    scoreString = "Deuce";
+                }
                 switch (m_score1)
                 {
                     case 0:
@@ -38,10 +42,6 @@ namespace Tennis
                     case 2:
                         scoreString = "Thirty-All";
                         break;
-                    default:
-                        scoreString = "Deuce";
-                        break;
-
                 }
             }
             else if (m_score1 >= 4 || m_score2 >= 4)
