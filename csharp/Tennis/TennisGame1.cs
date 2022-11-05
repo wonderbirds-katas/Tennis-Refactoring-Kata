@@ -31,17 +31,9 @@ namespace Tennis
                 {
                     scoreString = "Deuce";
                 }
-                switch (m_score1)
+                else
                 {
-                    case 0:
-                        scoreString = "Love-All";
-                        break;
-                    case 1:
-                        scoreString = "Fifteen-All";
-                        break;
-                    case 2:
-                        scoreString = "Thirty-All";
-                        break;
+                    scoreString = ScoreAsString(m_score1) + "-" + "All";
                 }
             }
             else if (m_score1 >= 4 || m_score2 >= 4)
