@@ -50,24 +50,14 @@ namespace Tennis
 
         private static string ScoreAsString(int score)
         {
-            var result = "";
-            switch (score)
+            return score switch
             {
-                case 0:
-                    result = "Love";
-                    break;
-                case 1:
-                    result = "Fifteen";
-                    break;
-                case 2:
-                    result = "Thirty";
-                    break;
-                case 3:
-                    result = "Forty";
-                    break;
-            }
-
-            return result;
+                0 => "Love",
+                1 => "Fifteen",
+                2 => "Thirty",
+                3 => "Forty",
+                _ => ""
+            };
         }
     }
 }
