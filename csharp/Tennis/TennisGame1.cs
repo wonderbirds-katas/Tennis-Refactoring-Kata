@@ -37,16 +37,14 @@ namespace Tennis
             return m_score1 == m_score2 && m_score1 > 2;
         }
 
-        private string AdvantageOrWinnerAsString()
-        {
-            string scoreString;
-            var minusResult = m_score1 - m_score2;
-            if (minusResult == 1) scoreString = "Advantage player1";
-            else if (minusResult == -1) scoreString = "Advantage player2";
-            else if (minusResult >= 2) scoreString = "Win for player1";
-            else scoreString = "Win for player2";
-            return scoreString;
-        }
+        private string AdvantageOrWinnerAsString() =>
+            (m_score1 - m_score2) switch
+            {
+                1 => "Advantage player1",
+                -1 => "Advantage player2",
+                >= 2 => "Win for player1",
+                _ => "Win for player2"
+            };
 
         private static string ScoreAsString(int score) =>
             score switch
