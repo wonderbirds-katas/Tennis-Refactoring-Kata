@@ -22,20 +22,11 @@ namespace Tennis
             return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
         }
 
-        private bool IsAdvantageOrWin()
-        {
-            return m_score1 >= 4 || m_score2 >= 4;
-        }
+        private bool IsAdvantageOrWin() => m_score1 >= 4 || m_score2 >= 4;
 
-        private bool IsTie()
-        {
-            return m_score1 == m_score2;
-        }
+        private bool IsTie() => m_score1 == m_score2;
 
-        private bool IsDeuce()
-        {
-            return m_score1 == m_score2 && m_score1 > 2;
-        }
+        private bool IsDeuce() => m_score1 == m_score2 && m_score1 > 2;
 
         private string AdvantageOrWinnerAsString() =>
             (m_score1 - m_score2) switch
