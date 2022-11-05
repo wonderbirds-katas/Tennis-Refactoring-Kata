@@ -58,24 +58,33 @@ namespace Tennis
                 {
                     if (i == 1) tempScore = m_score1;
                     else { score += "-"; tempScore = m_score2; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
+
+                    score += ScoreAsString(tempScore);
                 }
             }
             return score;
+        }
+
+        private static string ScoreAsString(int tempScore)
+        {
+            var result = "";
+            switch (tempScore)
+            {
+                case 0:
+                    result = "Love";
+                    break;
+                case 1:
+                    result = "Fifteen";
+                    break;
+                case 2:
+                    result = "Thirty";
+                    break;
+                case 3:
+                    result = "Forty";
+                    break;
+            }
+
+            return result;
         }
     }
 }
