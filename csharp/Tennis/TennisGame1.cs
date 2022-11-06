@@ -90,7 +90,6 @@ namespace Tennis
     internal class GameState : IGameState
     {
         private readonly int _player1Points;
-
         private readonly int _player2Points;
 
         public GameState(int player1Points, int player2Points)
@@ -117,23 +116,23 @@ namespace Tennis
 
         public string AsString() => _player1Points.AsString() + "-" + _player2Points.AsString();
 
-        private static bool IsWinPlayer2(int player1Points, int player2Points) =>
-            (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points >= 2;
-
-        private static bool IsWinPlayer1(int player1Points, int player2Points) =>
-            (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points >= 2;
-
-        private static bool IsAdvantagePlayer2(int player1Points, int player2Points) =>
-            (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points == 1;
-
-        private static bool IsAdvantagePlayer1(int player1Points, int player2Points) =>
-            (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points == 1;
-
         private static bool IsTie(int player1Points, int player2Points) =>
             player1Points == player2Points && player1Points <= 2;
 
         private static bool IsDeuce(int player1Points, int player2Points) =>
             player1Points == player2Points && player1Points > 2;
+
+        private static bool IsAdvantagePlayer1(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points == 1;
+
+        private static bool IsAdvantagePlayer2(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points == 1;
+
+        private static bool IsWinPlayer1(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points >= 2;
+
+        private static bool IsWinPlayer2(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points >= 2;
     }
 
     internal static class ScoreExtensions
