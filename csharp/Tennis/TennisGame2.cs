@@ -14,7 +14,7 @@ namespace Tennis
             if (p1point == p2point && p1point < 3)
                 score = ScoreAsString(p1point) + "-All";
             if (p1point == p2point && p1point > 2)
-                score = "Deuce";
+                return "Deuce";
 
             if (p1point - p2point == 1 && p2point >= 3)
             {
