@@ -55,10 +55,10 @@ namespace Tennis
 
         public AdvantagePlayer1(int player1Points) => _player1Points = player1Points;
 
-        public IGameState AddPointForPlayer1() => new GameState(_player1Points + 1, _player1Points - 1);
+        public IGameState AddPointForPlayer1() => new WinPlayer1();
 
         public IGameState AddPointForPlayer2() => new Deuce(_player1Points);
-        
+
         public string AsString() => "Advantage player1";
     }
     
@@ -73,6 +73,15 @@ namespace Tennis
         public IGameState AddPointForPlayer2() => new GameState(_player2Points - 1, _player2Points + 1);
         
         public string AsString() => "Advantage player2";
+    }
+
+    internal class WinPlayer1 : IGameState
+    {
+        public IGameState AddPointForPlayer1() => new WinPlayer1();
+
+        public IGameState AddPointForPlayer2() => new WinPlayer1();
+        
+        public string AsString() => "Win for player1";
     }
 
     internal class GameState : IGameState
@@ -97,14 +106,13 @@ namespace Tennis
             if (IsDeuce(player1Points, player2Points)) return new Deuce(player1Points);
             if (IsAdvantagePlayer1(player1Points, player2Points)) return new AdvantagePlayer1(player1Points);
             if (IsAdvantagePlayer2(player1Points, player2Points)) return new AdvantagePlayer2(player2Points);
+            if (IsWinPlayer1(player1Points, player2Points)) return new WinPlayer1();
 
             return new GameState(player1Points, player2Points);
         }
 
         public string AsString()
         {
-            if (IsWinPlayer1())
-                return "Win for player1";
             if (IsWinPlayer2())
                 return "Win for player2";
 
@@ -116,9 +124,9 @@ namespace Tennis
             return (_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points >= 2;
         }
 
-        private bool IsWinPlayer1()
+        private bool IsWinPlayer1(int player1Points, int player2Points)
         {
-            return (_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points >= 2;
+            return (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points >= 2;
         }
 
         private bool IsAdvantagePlayer2(int player1Points, int player2Points)
