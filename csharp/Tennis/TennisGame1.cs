@@ -1,5 +1,3 @@
-using System;
-
 namespace Tennis
 {
     public class TennisGame1 : ITennisGame
@@ -48,7 +46,7 @@ namespace Tennis
 
         public string AsString() => "Deuce";
     }
-    
+
     internal class AdvantagePlayer1 : IGameState
     {
         private readonly int _player1Points;
@@ -61,7 +59,7 @@ namespace Tennis
 
         public string AsString() => "Advantage player1";
     }
-    
+
     internal class AdvantagePlayer2 : IGameState
     {
         private readonly int _player2Points;
@@ -71,7 +69,7 @@ namespace Tennis
         public IGameState AddPointForPlayer1() => new Deuce(_player2Points);
 
         public IGameState AddPointForPlayer2() => new WinPlayer2();
-        
+
         public string AsString() => "Advantage player2";
     }
 
@@ -80,7 +78,7 @@ namespace Tennis
         public IGameState AddPointForPlayer1() => new WinPlayer1();
 
         public IGameState AddPointForPlayer2() => new WinPlayer1();
-        
+
         public string AsString() => "Win for player1";
     }
 
@@ -89,7 +87,7 @@ namespace Tennis
         public IGameState AddPointForPlayer1() => new WinPlayer2();
 
         public IGameState AddPointForPlayer2() => new WinPlayer2();
-        
+
         public string AsString() => "Win for player2";
     }
 
@@ -109,7 +107,7 @@ namespace Tennis
 
         public IGameState AddPointForPlayer2() => CreateStateWithPoints(_player1Points, _player2Points + 1);
 
-        private IGameState CreateStateWithPoints(int player1Points, int player2Points)
+        private static IGameState CreateStateWithPoints(int player1Points, int player2Points)
         {
             if (IsTie(player1Points, player2Points)) return new Tie(player1Points);
             if (IsDeuce(player1Points, player2Points)) return new Deuce(player1Points);
@@ -121,35 +119,24 @@ namespace Tennis
             return new GameState(player1Points, player2Points);
         }
 
-        public string AsString()
-        {
-            return _player1Points.AsString() + "-" + _player2Points.AsString();
-        }
+        public string AsString() => _player1Points.AsString() + "-" + _player2Points.AsString();
 
-        private bool IsWinPlayer2(int player1Points, int player2Points)
-        {
-            return (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points >= 2;
-        }
+        private static bool IsWinPlayer2(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points >= 2;
 
-        private bool IsWinPlayer1(int player1Points, int player2Points)
-        {
-            return (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points >= 2;
-        }
+        private static bool IsWinPlayer1(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points >= 2;
 
-        private bool IsAdvantagePlayer2(int player1Points, int player2Points)
-        {
-            return (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points == 1;
-        }
+        private static bool IsAdvantagePlayer2(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player2Points - player1Points == 1;
 
-        private bool IsAdvantagePlayer1(int player1Points, int player2Points)
-        {
-            return (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points == 1;
-        }
+        private static bool IsAdvantagePlayer1(int player1Points, int player2Points) =>
+            (player1Points >= 4 || player2Points >= 4) && player1Points - player2Points == 1;
 
-        private bool IsTie(int player1Points, int player2Points) =>
-            player1Points == player2Points && _player1Points <= 2;
+        private static bool IsTie(int player1Points, int player2Points) =>
+            player1Points == player2Points && player1Points <= 2;
 
-        private bool IsDeuce(int player1Points, int player2Points) =>
+        private static bool IsDeuce(int player1Points, int player2Points) =>
             player1Points == player2Points && player1Points > 2;
     }
 
