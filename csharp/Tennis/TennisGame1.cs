@@ -12,7 +12,7 @@ namespace Tennis
             }
             else
             {
-                _state.AddPointForPlayer2();
+                _state = _state.AddPointForPlayer2();
             }
         }
 
@@ -49,7 +49,7 @@ namespace Tennis
     {
         public int Player1Points { get; private init; }
 
-        public int Player2Points { get; private set; }
+        public int Player2Points { get; private init; }
 
         public GameState AddPointForPlayer1() =>
             new()
@@ -58,10 +58,12 @@ namespace Tennis
                 Player2Points = Player2Points
             };
 
-        public void AddPointForPlayer2()
-        {
-            Player2Points++;
-        }
+        public GameState AddPointForPlayer2()=>
+            new()
+            {
+                Player1Points = Player1Points,
+                Player2Points = Player2Points + 1
+            };
         
         public bool IsAdvantageOrWin() => Player1Points >= 4 || Player2Points >= 4;
         
