@@ -35,7 +35,7 @@ namespace Tennis
 
         private bool IsTie() => _score1 < 3 && _score1 == _score2;
 
-        private bool IsDeuce() => _score1 == _score2 && _score1 + _score2 >= 6;
+        private bool IsDeuce() => _score1 >= 3 && _score1 == _score2;
 
         private bool IsAdvantage() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) == 1;
         
