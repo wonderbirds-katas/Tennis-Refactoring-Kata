@@ -18,10 +18,9 @@ namespace Tennis
 
             if (p1point > 0 && p2point == 0)
             {
-                score = ScoreAsString(p1point);
+                p1res = ScoreAsString(p1point);
                 p2res = "Love";
-                p1res = score;
-                score = p1res + "-" + p2res;
+                score = p1res + "-Love";
             }
             if (p2point > 0 && p1point == 0)
             {
