@@ -16,41 +16,41 @@ namespace Tennis
 
     internal class GameState
     {
-        private int Player1Points { get; init; }
+        private int _player1Points;
 
-        private int Player2Points { get; init; }
+        private int _player2Points;
 
         public GameState AddPointForPlayer1() =>
             new()
             {
-                Player1Points = Player1Points + 1,
-                Player2Points = Player2Points
+                _player1Points = _player1Points + 1,
+                _player2Points = _player2Points
             };
 
         public GameState AddPointForPlayer2()=>
             new()
             {
-                Player1Points = Player1Points,
-                Player2Points = Player2Points + 1
+                _player1Points = _player1Points,
+                _player2Points = _player2Points + 1
             };
 
         public string AsString()
         {
             if (IsDeuce()) return "Deuce";
-            if (IsTie()) return ScoreAsString(Player1Points) + "-" + "All";
+            if (IsTie()) return ScoreAsString(_player1Points) + "-" + "All";
             if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
 
-            return ScoreAsString(Player1Points) + "-" + ScoreAsString(Player2Points);
+            return ScoreAsString(_player1Points) + "-" + ScoreAsString(_player2Points);
         }
 
-        private bool IsAdvantageOrWin() => Player1Points >= 4 || Player2Points >= 4;
+        private bool IsAdvantageOrWin() => _player1Points >= 4 || _player2Points >= 4;
 
-        private bool IsTie() => Player1Points == Player2Points;
+        private bool IsTie() => _player1Points == _player2Points;
 
-        private bool IsDeuce() => Player1Points == Player2Points && Player1Points > 2;
+        private bool IsDeuce() => _player1Points == _player2Points && _player1Points > 2;
 
         private string AdvantageOrWinnerAsString() =>
-            (Player1Points - Player2Points) switch
+            (_player1Points - _player2Points) switch
             {
                 1 => "Advantage player1",
                 -1 => "Advantage player2",
