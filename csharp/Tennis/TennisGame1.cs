@@ -2,7 +2,7 @@ namespace Tennis
 {
     public class TennisGame1 : ITennisGame
     {
-        private IGameState _state = new GameState();
+        private IGameState _state = new Tie(0);
 
         public void WonPoint(string playerName) =>
             _state = playerName switch
@@ -21,6 +21,29 @@ namespace Tennis
         string AsString();
     }
 
+    internal class Tie : IGameState
+    {
+        private readonly int _points;
+
+        public Tie(int points) => _points = points;
+
+        public IGameState AddPointForPlayer1() => new GameState(_points + 1, _points);
+
+        public IGameState AddPointForPlayer2() => new GameState(_points, _points + 1);
+
+        public string AsString() => ScoreAsString(_points) + "-" + "All";
+
+        private static string ScoreAsString(int score) =>
+            score switch
+            {
+                0 => "Love",
+                1 => "Fifteen",
+                2 => "Thirty",
+                3 => "Forty",
+                _ => ""
+            };
+    }
+
     internal class GameState : IGameState
     {
         private readonly int _player1Points;
@@ -37,7 +60,10 @@ namespace Tennis
             _player2Points = player2Points;
         }
 
-        public IGameState AddPointForPlayer1() => new GameState(_player1Points + 1, _player2Points);
+        public IGameState AddPointForPlayer1()
+        {
+            return new GameState(_player1Points + 1, _player2Points);
+        }
 
         public IGameState AddPointForPlayer2() => new GameState(_player1Points, _player2Points + 1);
 
