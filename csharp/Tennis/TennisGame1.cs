@@ -31,17 +31,7 @@ namespace Tennis
 
         public IGameState AddPointForPlayer2() => new GameState(_points, _points + 1);
 
-        public string AsString() => ScoreAsString(_points) + "-" + "All";
-
-        private static string ScoreAsString(int score) =>
-            score switch
-            {
-                0 => "Love",
-                1 => "Fifteen",
-                2 => "Thirty",
-                3 => "Forty",
-                _ => ""
-            };
+        public string AsString() => _points.AsString() + "-" + "All";
     }
 
     internal class GameState : IGameState
@@ -59,22 +49,24 @@ namespace Tennis
         public IGameState AddPointForPlayer1()
         {
             var nextPlayer1Points = _player1Points + 1;
-            
+
             if (IsTie(nextPlayer1Points, _player2Points))
             {
                 return new Tie(nextPlayer1Points);
             }
+
             return new GameState(nextPlayer1Points, _player2Points);
         }
 
         public IGameState AddPointForPlayer2()
         {
             var nextPlayer2Points = _player2Points + 1;
-            
+
             if (IsTie(_player1Points, nextPlayer2Points))
             {
                 return new Tie(nextPlayer2Points);
             }
+
             return new GameState(_player1Points, nextPlayer2Points);
         }
 
@@ -83,12 +75,13 @@ namespace Tennis
             if (IsDeuce()) return "Deuce";
             if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
 
-            return ScoreAsString(_player1Points) + "-" + ScoreAsString(_player2Points);
+            return _player1Points.AsString() + "-" + _player2Points.AsString();
         }
 
         private bool IsAdvantageOrWin() => _player1Points >= 4 || _player2Points >= 4;
 
-        private bool IsTie(int player1Points, int player2Points) => player1Points == player2Points && _player1Points <= 2;
+        private bool IsTie(int player1Points, int player2Points) =>
+            player1Points == player2Points && _player1Points <= 2;
 
         private bool IsDeuce() => _player1Points == _player2Points && _player1Points > 2;
 
@@ -100,8 +93,11 @@ namespace Tennis
                 >= 2 => "Win for player1",
                 _ => "Win for player2"
             };
+    }
 
-        private static string ScoreAsString(int score) =>
+    internal static class ScoreExtensions
+    {
+        public static string AsString(this int score) =>
             score switch
             {
                 0 => "Love",
