@@ -5,9 +5,6 @@ namespace Tennis
         private int p1point;
         private int p2point;
 
-        private string p1res = "";
-        private string p2res = "";
-
         public string GetScore()
         {
             var score = "";
@@ -32,10 +29,8 @@ namespace Tennis
             {
                 return "Win for player2";
             }
-            
-            p2res = ScoreAsString(p2point);
-            p1res = ScoreAsString(p1point);
-            score = p1res + "-" + p2res;
+
+            score = ScoreAsString(p1point) + "-" + ScoreAsString(p2point);
             return score;
         }
 
