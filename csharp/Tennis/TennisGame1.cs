@@ -1,3 +1,5 @@
+using System;
+
 namespace Tennis
 {
     public class TennisGame1 : ITennisGame
@@ -73,13 +75,14 @@ namespace Tennis
 
         public string AsString()
         {
-            if (_player1Points >= 4 || _player2Points >= 4) return (_player1Points - _player2Points) switch
-            {
-                1 => "Advantage player1",
-                -1 => "Advantage player2",
-                >= 2 => "Win for player1",
-                _ => "Win for player2"
-            };
+            if ((_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points == 1)
+                return "Advantage player1";
+            if ((_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points == 1)
+                return "Advantage player2";
+            if ((_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points >= 2)
+                return "Win for player1";
+            if ((_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points >= 2)
+                return "Win for player2";
 
             return _player1Points.AsString() + "-" + _player2Points.AsString();
         }
