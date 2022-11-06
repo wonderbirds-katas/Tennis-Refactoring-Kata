@@ -75,16 +75,36 @@ namespace Tennis
 
         public string AsString()
         {
-            if ((_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points == 1)
+            if (IsAdvantagePlayer1())
                 return "Advantage player1";
-            if ((_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points == 1)
+            if (IsAdvantagePlayer2())
                 return "Advantage player2";
-            if ((_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points >= 2)
+            if (IsWinPlayer1())
                 return "Win for player1";
-            if ((_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points >= 2)
+            if (IsWinPlayer2())
                 return "Win for player2";
 
             return _player1Points.AsString() + "-" + _player2Points.AsString();
+        }
+
+        private bool IsWinPlayer2()
+        {
+            return (_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points >= 2;
+        }
+
+        private bool IsWinPlayer1()
+        {
+            return (_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points >= 2;
+        }
+
+        private bool IsAdvantagePlayer2()
+        {
+            return (_player1Points >= 4 || _player2Points >= 4) && _player2Points - _player1Points == 1;
+        }
+
+        private bool IsAdvantagePlayer1()
+        {
+            return (_player1Points >= 4 || _player2Points >= 4) && _player1Points - _player2Points == 1;
         }
 
         private bool IsTie(int player1Points, int player2Points) =>
