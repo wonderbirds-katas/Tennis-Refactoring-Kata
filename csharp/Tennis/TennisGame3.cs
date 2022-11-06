@@ -39,7 +39,7 @@ namespace Tennis
 
         private bool IsAdvantage() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) == 1;
         
-        private bool IsWin() => _score1 >= 4 || _score2 >= 4 || _score1 + _score2 >= 6 || _score1 == _score2;
+        private bool IsWin() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) >= 4;
 
         private string ScoreAsString(int score)
         {
