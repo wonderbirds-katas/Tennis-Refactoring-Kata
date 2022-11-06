@@ -2,25 +2,25 @@ namespace Tennis
 {
     public class TennisGame2 : ITennisGame
     {
-        private int p1point;
-        private int p2point;
+        private int _score1;
+        private int _score2;
 
         public string GetScore()
         {
-            if (p1point == p2point && p1point < 3)
-                return ScoreAsString(p1point) + "-All";
-            if (p1point == p2point && p1point > 2)
+            if (_score1 == _score2 && _score1 < 3)
+                return ScoreAsString(_score1) + "-All";
+            if (_score1 == _score2 && _score1 > 2)
                 return "Deuce";
-            if (p1point - p2point == 1 && p2point >= 3)
+            if (_score1 - _score2 == 1 && _score2 >= 3)
                 return "Advantage player1";
-            if (p2point - p1point == 1 && p1point >= 3)
+            if (_score2 - _score1 == 1 && _score1 >= 3)
                 return "Advantage player2";
-            if (p1point >= 4 && (p1point - p2point) >= 2)
+            if (_score1 >= 4 && (_score1 - _score2) >= 2)
                 return "Win for player1";
-            if (p2point >= 4 && (p2point - p1point) >= 2)
+            if (_score2 >= 4 && (_score2 - _score1) >= 2)
                 return "Win for player2";
 
-            return ScoreAsString(p1point) + "-" + ScoreAsString(p2point);
+            return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
         }
 
         private static string ScoreAsString(int score) =>
@@ -36,9 +36,9 @@ namespace Tennis
         public void WonPoint(string player)
         {
             if (player == "player1")
-                p1point++;
+                _score1++;
             else
-                p2point++;
+                _score2++;
         }
 
     }
