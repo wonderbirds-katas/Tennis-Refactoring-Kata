@@ -23,23 +23,23 @@ namespace Tennis
 
     internal class GameState : IGameState
     {
-        private int _player1Points;
+        private readonly int _player1Points;
 
-        private int _player2Points;
+        private readonly int _player2Points;
 
-        public GameState AddPointForPlayer1() =>
-            new()
-            {
-                _player1Points = _player1Points + 1,
-                _player2Points = _player2Points
-            };
+        public GameState()
+        {
+        }
+        
+        public GameState(int player1Points, int player2Points)
+        {
+            _player1Points = player1Points;
+            _player2Points = player2Points;
+        }
 
-        public GameState AddPointForPlayer2()=>
-            new()
-            {
-                _player1Points = _player1Points,
-                _player2Points = _player2Points + 1
-            };
+        public GameState AddPointForPlayer1() => new(_player1Points + 1, _player2Points);
+
+        public GameState AddPointForPlayer2() => new(_player1Points, _player2Points + 1);
 
         public string AsString()
         {
