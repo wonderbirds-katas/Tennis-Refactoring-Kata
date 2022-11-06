@@ -7,7 +7,6 @@ namespace Tennis
 
         public string GetScore()
         {
-            var score = "";
             if (p1point == p2point && p1point < 3)
                 return ScoreAsString(p1point) + "-All";
             if (p1point == p2point && p1point > 2)
@@ -30,8 +29,7 @@ namespace Tennis
                 return "Win for player2";
             }
 
-            score = ScoreAsString(p1point) + "-" + ScoreAsString(p2point);
-            return score;
+            return ScoreAsString(p1point) + "-" + ScoreAsString(p2point);
         }
 
         private static string ScoreAsString(int score) =>
