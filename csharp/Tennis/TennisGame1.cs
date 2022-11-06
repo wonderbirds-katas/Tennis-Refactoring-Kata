@@ -20,12 +20,10 @@ namespace Tennis
         {
             if (IsDeuce()) return "Deuce";
             if (IsTie()) return ScoreAsString(_state.Player1Points) + "-" + "All";
-            if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
+            if (_state.IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
 
             return ScoreAsString(_state.Player1Points) + "-" + ScoreAsString(_state.Player2Points);
         }
-
-        private bool IsAdvantageOrWin() => _state.Player1Points >= 4 || _state.Player2Points >= 4;
 
         private bool IsTie() => _state.Player1Points == _state.Player2Points;
 
@@ -66,5 +64,7 @@ namespace Tennis
         {
             Player2Points++;
         }
+        
+        public bool IsAdvantageOrWin() => Player1Points >= 4 || Player2Points >= 4;
     }
 }
