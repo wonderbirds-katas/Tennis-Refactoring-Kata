@@ -38,12 +38,12 @@ namespace Tennis
 
             if (p1point - p2point == 1 && p2point >= 3)
             {
-                score = "Advantage player1";
+                return "Advantage player1";
             }
 
             if (p2point - p1point == 1 && p1point >= 3)
             {
-                score = "Advantage player2";
+                return "Advantage player2";
             }
 
             if (p1point >= 4 && (p1point - p2point) >= 2)
