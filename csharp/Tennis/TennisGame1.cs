@@ -5,11 +5,7 @@ namespace Tennis
         private IGameState _state = new Tie(0);
 
         public void WonPoint(string playerName) =>
-            _state = playerName switch
-            {
-                "player1" => _state.AddPointForPlayer1(),
-                _ => _state.AddPointForPlayer2()
-            };
+            _state = playerName == "player1" ? _state.AddPointForPlayer1() : _state.AddPointForPlayer2();
 
         public string GetScore() => _state.AsString();
     }
