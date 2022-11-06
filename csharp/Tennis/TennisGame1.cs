@@ -2,7 +2,7 @@ namespace Tennis
 {
     public class TennisGame1 : ITennisGame
     {
-        private GameState _state = new();
+        private IGameState _state = new GameState();
 
         public void WonPoint(string playerName) =>
             _state = playerName switch
@@ -14,7 +14,14 @@ namespace Tennis
         public string GetScore() => _state.AsString();
     }
 
-    internal class GameState
+    internal interface IGameState
+    {
+        GameState AddPointForPlayer1();
+        GameState AddPointForPlayer2();
+        string AsString();
+    }
+
+    internal class GameState : IGameState
     {
         private int _player1Points;
 
