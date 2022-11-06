@@ -46,7 +46,7 @@ namespace Tennis
                 score = "Advantage player2";
             }
 
-            if (p1point >= 4 && p2point >= 0 && (p1point - p2point) >= 2)
+            if (p1point >= 4 && (p1point - p2point) >= 2)
             {
                 score = "Win for player1";
             }
