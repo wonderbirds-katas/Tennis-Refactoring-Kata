@@ -16,8 +16,7 @@ namespace Tennis
         public string GetScore()
         {
             if (IsTie()) return ScoreAsString(_score1) + "-All";
-            if (_score1 == _score2 && _score1 + _score2 >= 6)
-                return "Deuce";
+            if (IsDeuce()) return "Deuce";
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6) && (_score1 != _score2))
                 return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
 
@@ -28,6 +27,8 @@ namespace Tennis
             
             return "Win for " + leadPlayerName;
         }
+
+        private bool IsDeuce() => _score1 == _score2 && _score1 + _score2 >= 6;
 
         private bool IsTie() => _score1 < 4 && _score2 < 4 && _score1 + _score2 < 6 && _score1 == _score2;
 
