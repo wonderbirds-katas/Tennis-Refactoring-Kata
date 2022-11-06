@@ -19,13 +19,14 @@ namespace Tennis
             if (p1point > 0 && p2point == 0)
             {
                 if (p1point == 1)
-                    p1res = "Fifteen";
+                    score = "Fifteen";
                 if (p1point == 2)
-                    p1res = "Thirty";
+                    score = "Thirty";
                 if (p1point == 3)
-                    p1res = "Forty";
+                    score = "Forty";
 
                 p2res = "Love";
+                p1res = score;
                 score = p1res + "-" + p2res;
             }
             if (p2point > 0 && p1point == 0)
