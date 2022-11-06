@@ -7,8 +7,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            if (_score1 == _score2 && _score1 < 3)
-                return ScoreAsString(_score1) + "-All";
+            if (IsTie()) return ScoreAsString(_score1) + "-All";
             if (_score1 == _score2 && _score1 > 2)
                 return "Deuce";
             if (_score1 - _score2 == 1 && _score2 >= 3)
@@ -22,6 +21,8 @@ namespace Tennis
 
             return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
         }
+
+        private bool IsTie() => _score1 == _score2 && _score1 < 3;
 
         private static string ScoreAsString(int score) =>
             score switch
