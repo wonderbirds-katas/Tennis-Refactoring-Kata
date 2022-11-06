@@ -17,16 +17,20 @@ namespace Tennis
         {
             if (IsDeuce()) return "Deuce";
             if (IsTie()) return ScoreAsString(m_score1) + "-" + "All";
-            if (m_score1 >= 4 || m_score2 >= 4) return (m_score1 - m_score2) switch
-            {
-                1 => "Advantage player1",
-                -1 => "Advantage player2",
-                >= 2 => "Win for player1",
-                _ => "Win for player2"
-            };
+            if (IsAdvantagePlayer1()) return "Advantage player1";
+
+            if (m_score1 >= 4 || m_score2 >= 4)
+                return (m_score1 - m_score2) switch
+                {
+                    -1 => "Advantage player2",
+                    >= 2 => "Win for player1",
+                    _ => "Win for player2"
+                };
 
             return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
         }
+
+        private bool IsAdvantagePlayer1() => m_score1 >= 4 && m_score1 - m_score2 == 1;
 
         private bool IsTie() => m_score1 == m_score2;
 
