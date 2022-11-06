@@ -48,11 +48,11 @@ namespace Tennis
 
             if (p1point >= 4 && (p1point - p2point) >= 2)
             {
-                score = "Win for player1";
+                return "Win for player1";
             }
             if (p2point >= 4 && (p2point - p1point) >= 2)
             {
-                score = "Win for player2";
+                return "Win for player2";
             }
             return score;
         }
