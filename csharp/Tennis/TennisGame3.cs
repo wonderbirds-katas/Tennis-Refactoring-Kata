@@ -27,7 +27,7 @@ namespace Tennis
             return "Win for " + leadPlayerName;
         }
 
-        private bool IsAdvantage() => (_score1 - _score2) * (_score1 - _score2) == 1;
+        private bool IsAdvantage() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) == 1;
 
         private bool IsDeuce() => _score1 == _score2 && _score1 + _score2 >= 6;
 
