@@ -17,25 +17,20 @@ namespace Tennis
         {
             if (IsDeuce()) return "Deuce";
             if (IsTie()) return ScoreAsString(m_score1) + "-" + "All";
-            if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
-
-            return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
-        }
-
-        private bool IsAdvantageOrWin() => m_score1 >= 4 || m_score2 >= 4;
-
-        private bool IsTie() => m_score1 == m_score2;
-
-        private bool IsDeuce() => m_score1 == m_score2 && m_score1 > 2;
-
-        private string AdvantageOrWinnerAsString() =>
-            (m_score1 - m_score2) switch
+            if (m_score1 >= 4 || m_score2 >= 4) return (m_score1 - m_score2) switch
             {
                 1 => "Advantage player1",
                 -1 => "Advantage player2",
                 >= 2 => "Win for player1",
                 _ => "Win for player2"
             };
+
+            return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
+        }
+
+        private bool IsTie() => m_score1 == m_score2;
+
+        private bool IsDeuce() => m_score1 == m_score2 && m_score1 > 2;
 
         private static string ScoreAsString(int score) =>
             score switch
