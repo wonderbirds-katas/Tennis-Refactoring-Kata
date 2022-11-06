@@ -73,27 +73,22 @@ namespace Tennis
 
         public string AsString()
         {
-            if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
-
-            return _player1Points.AsString() + "-" + _player2Points.AsString();
-        }
-
-        private bool IsAdvantageOrWin() => _player1Points >= 4 || _player2Points >= 4;
-
-        private bool IsTie(int player1Points, int player2Points) =>
-            player1Points == player2Points && _player1Points <= 2;
-
-        private bool IsDeuce(int player1Points, int player2Points) =>
-            player1Points == player2Points && player1Points > 2;
-
-        private string AdvantageOrWinnerAsString() =>
-            (_player1Points - _player2Points) switch
+            if (_player1Points >= 4 || _player2Points >= 4) return (_player1Points - _player2Points) switch
             {
                 1 => "Advantage player1",
                 -1 => "Advantage player2",
                 >= 2 => "Win for player1",
                 _ => "Win for player2"
             };
+
+            return _player1Points.AsString() + "-" + _player2Points.AsString();
+        }
+
+        private bool IsTie(int player1Points, int player2Points) =>
+            player1Points == player2Points && _player1Points <= 2;
+
+        private bool IsDeuce(int player1Points, int player2Points) =>
+            player1Points == player2Points && player1Points > 2;
     }
 
     internal static class ScoreExtensions
