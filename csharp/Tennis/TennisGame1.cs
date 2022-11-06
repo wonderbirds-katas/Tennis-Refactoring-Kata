@@ -18,15 +18,13 @@ namespace Tennis
 
         public string GetScore()
         {
-            if (IsDeuce()) return "Deuce";
+            if (_state.IsDeuce()) return "Deuce";
             if (_state.IsTie()) return ScoreAsString(_state.Player1Points) + "-" + "All";
             if (_state.IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
 
             return ScoreAsString(_state.Player1Points) + "-" + ScoreAsString(_state.Player2Points);
         }
-
-        private bool IsDeuce() => _state.Player1Points == _state.Player2Points && _state.Player1Points > 2;
-
+        
         private string AdvantageOrWinnerAsString() =>
             (_state.Player1Points - _state.Player2Points) switch
             {
@@ -66,5 +64,7 @@ namespace Tennis
         public bool IsAdvantageOrWin() => Player1Points >= 4 || Player2Points >= 4;
         
         public bool IsTie() => Player1Points == Player2Points;
+
+        public bool IsDeuce() => Player1Points == Player2Points && Player1Points > 2;
     }
 }
