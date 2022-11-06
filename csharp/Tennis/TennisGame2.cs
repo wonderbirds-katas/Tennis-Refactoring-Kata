@@ -11,8 +11,7 @@ namespace Tennis
             if (IsDeuce()) return "Deuce";
             if (IsAdvantagePlayer1()) return "Advantage player1";
             if (IsAdvantagePlayer2()) return "Advantage player2";
-            if (_score1 >= 4 && (_score1 - _score2) >= 2)
-                return "Win for player1";
+            if (IsWinPlayer1()) return "Win for player1";
             if (_score2 >= 4 && (_score2 - _score1) >= 2)
                 return "Win for player2";
 
@@ -26,6 +25,8 @@ namespace Tennis
         private bool IsAdvantagePlayer1() => _score1 - _score2 == 1 && _score2 >= 3;
 
         private bool IsAdvantagePlayer2() => _score2 - _score1 == 1 && _score1 >= 3;
+
+        private bool IsWinPlayer1() => _score1 >= 4 && (_score1 - _score2) >= 2;
 
         private static string ScoreAsString(int score) =>
             score switch
