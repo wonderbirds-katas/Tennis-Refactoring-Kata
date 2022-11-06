@@ -20,17 +20,14 @@ namespace Tennis
             if (IsAdvantagePlayer1()) return "Advantage player1";
             if (IsAdvantagePlayer2()) return "Advantage player2";
             if (IsWinPlayer1()) return "Win for player1";
-
-            if (m_score1 >= 4 || m_score2 >= 4)
-                return (m_score1 - m_score2) switch
-                {
-                    _ => "Win for player2"
-                };
+            if (IsWinPlayer2()) return "Win for player2";
 
             return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
         }
 
         private bool IsWinPlayer1() => m_score1 >= 4 && m_score1 - m_score2 >= 2;
+        
+        private bool IsWinPlayer2() => m_score2 >= 4 && m_score2 - m_score1 >= 2;
         
         private bool IsAdvantagePlayer1() => m_score1 >= 4 && m_score1 - m_score2 == 1;
 
