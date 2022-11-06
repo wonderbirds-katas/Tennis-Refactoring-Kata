@@ -50,10 +50,6 @@ namespace Tennis
 
         private readonly int _player2Points;
 
-        public GameState()
-        {
-        }
-        
         public GameState(int player1Points, int player2Points)
         {
             _player1Points = player1Points;
