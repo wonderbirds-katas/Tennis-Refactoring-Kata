@@ -13,7 +13,7 @@ namespace Tennis
             var score = "";
             if (p1point == p2point && p1point < 3)
             {
-                score = ScoreAsString(score);
+                score = ScoreAsString(p1point);
                 score += "-All";
             }
             if (p1point == p2point && p1point > 2)
@@ -90,15 +90,16 @@ namespace Tennis
             return score;
         }
 
-        private string ScoreAsString(string score)
+        private string ScoreAsString(int score)
         {
-            if (p1point == 0)
-                score = "Love";
-            if (p1point == 1)
-                score = "Fifteen";
-            if (p1point == 2)
-                score = "Thirty";
-            return score;
+            var result = "";
+            if (score == 0)
+                result = "Love";
+            if (score == 1)
+                result = "Fifteen";
+            if (score == 2)
+                result = "Thirty";
+            return result;
         }
 
         private void P1Score()
