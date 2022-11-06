@@ -78,7 +78,7 @@ namespace Tennis
 
         private bool IsAdvantageOrWin() => _player1Points >= 4 || _player2Points >= 4;
 
-        private bool IsTie(int player1Points, int player2Points) => player1Points == player2Points;
+        private bool IsTie(int player1Points, int player2Points) => player1Points == player2Points && _player1Points <= 2;
 
         private bool IsDeuce() => _player1Points == _player2Points && _player1Points > 2;
 
