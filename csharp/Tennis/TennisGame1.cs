@@ -2,40 +2,40 @@ namespace Tennis
 {
     public class TennisGame1 : ITennisGame
     {
-        private int m_score1 = 0;
-        private int m_score2 = 0;
+        private int _score1;
+        private int _score2;
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
-                m_score1 += 1;
+                _score1 += 1;
             else
-                m_score2 += 1;
+                _score2 += 1;
         }
 
         public string GetScore()
         {
-            if (IsTie()) return ScoreAsString(m_score1) + "-" + "All";
+            if (IsTie()) return ScoreAsString(_score1) + "-" + "All";
             if (IsDeuce()) return "Deuce";
             if (IsAdvantagePlayer1()) return "Advantage player1";
             if (IsAdvantagePlayer2()) return "Advantage player2";
             if (IsWinPlayer1()) return "Win for player1";
             if (IsWinPlayer2()) return "Win for player2";
 
-            return ScoreAsString(m_score1) + "-" + ScoreAsString(m_score2);
+            return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
         }
 
-        private bool IsWinPlayer1() => m_score1 >= 4 && m_score1 - m_score2 >= 2;
+        private bool IsWinPlayer1() => _score1 >= 4 && _score1 - _score2 >= 2;
         
-        private bool IsWinPlayer2() => m_score2 >= 4 && m_score2 - m_score1 >= 2;
+        private bool IsWinPlayer2() => _score2 >= 4 && _score2 - _score1 >= 2;
         
-        private bool IsAdvantagePlayer1() => m_score1 >= 4 && m_score1 - m_score2 == 1;
+        private bool IsAdvantagePlayer1() => _score1 >= 4 && _score1 - _score2 == 1;
 
-        private bool IsAdvantagePlayer2() => m_score2 >= 4 && m_score2 - m_score1 == 1;
+        private bool IsAdvantagePlayer2() => _score2 >= 4 && _score2 - _score1 == 1;
 
-        private bool IsTie() => m_score1 == m_score2 && m_score1 <= 2;
+        private bool IsTie() => _score1 == _score2 && _score1 <= 2;
 
-        private bool IsDeuce() => m_score1 == m_score2 && m_score1 > 2;
+        private bool IsDeuce() => _score1 == _score2 && _score1 > 2;
 
         private static string ScoreAsString(int score) =>
             score switch
