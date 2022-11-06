@@ -16,8 +16,8 @@ namespace Tennis
 
     internal interface IGameState
     {
-        GameState AddPointForPlayer1();
-        GameState AddPointForPlayer2();
+        IGameState AddPointForPlayer1();
+        IGameState AddPointForPlayer2();
         string AsString();
     }
 
@@ -37,9 +37,9 @@ namespace Tennis
             _player2Points = player2Points;
         }
 
-        public GameState AddPointForPlayer1() => new(_player1Points + 1, _player2Points);
+        public IGameState AddPointForPlayer1() => new GameState(_player1Points + 1, _player2Points);
 
-        public GameState AddPointForPlayer2() => new(_player1Points, _player2Points + 1);
+        public IGameState AddPointForPlayer2() => new GameState(_player1Points, _player2Points + 1);
 
         public string AsString()
         {
