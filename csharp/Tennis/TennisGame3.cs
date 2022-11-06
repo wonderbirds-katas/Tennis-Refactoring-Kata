@@ -26,8 +26,8 @@ namespace Tennis
             
             if ((_score1 - _score2) * (_score1 - _score2) == 1)
                 return "Advantage " + leadPlayerName;
-            else
-                return "Win for " + leadPlayerName;
+            
+            return "Win for " + leadPlayerName;
         }
 
         private string ScoreAsString(int score)
