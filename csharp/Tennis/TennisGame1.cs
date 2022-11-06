@@ -2,6 +2,8 @@ namespace Tennis
 {
     public class TennisGame1 : ITennisGame
     {
+        private GameState state = new GameState();
+        
         private int m_score1 = 0;
         private int m_score2 = 0;
 
@@ -46,5 +48,9 @@ namespace Tennis
                 3 => "Forty",
                 _ => ""
             };
+    }
+
+    internal class GameState
+    {
     }
 }
