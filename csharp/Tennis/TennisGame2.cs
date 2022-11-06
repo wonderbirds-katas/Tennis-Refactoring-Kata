@@ -90,17 +90,14 @@ namespace Tennis
             return score;
         }
 
-        private string ScoreAsString(int score)
-        {
-            var result = "";
-            if (score == 0)
-                result = "Love";
-            if (score == 1)
-                result = "Fifteen";
-            if (score == 2)
-                result = "Thirty";
-            return result;
-        }
+        private static string ScoreAsString(int score) =>
+            score switch
+            {
+                0 => "Love",
+                1 => "Fifteen",
+                2 => "Thirty",
+                _ => ""
+            };
 
         private void P1Score()
         {
