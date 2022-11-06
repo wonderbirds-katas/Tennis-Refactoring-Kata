@@ -15,16 +15,19 @@ namespace Tennis
 
         public string GetScore()
         {
-            var leadPlayerName = _score1 > _score2 ? _name1 : _name2;
-            
             if (IsTie()) return ScoreAsString(_score1) + "-All";
             if (IsDeuce()) return "Deuce";
-            if (IsAdvantage()) return "Advantage " + leadPlayerName;
+            if (IsAdvantage()) return "Advantage " + LeadPlayerName();
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6) && (_score1 != _score2))
                 return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
 
 
-            return "Win for " + leadPlayerName;
+            return "Win for " + LeadPlayerName();
+        }
+
+        private string LeadPlayerName()
+        {
+            return _score1 > _score2 ? _name1 : _name2;
         }
 
         private bool IsAdvantage() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) == 1;
