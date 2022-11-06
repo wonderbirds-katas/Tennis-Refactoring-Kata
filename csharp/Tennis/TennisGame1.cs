@@ -4,22 +4,14 @@ namespace Tennis
     {
         private GameState _state = new();
 
-        public void WonPoint(string playerName)
-        {
-            if (playerName == "player1")
+        public void WonPoint(string playerName) =>
+            _state = playerName switch
             {
-                _state = _state.AddPointForPlayer1();
-            }
-            else
-            {
-                _state = _state.AddPointForPlayer2();
-            }
-        }
+                "player1" => _state.AddPointForPlayer1(),
+                _ => _state.AddPointForPlayer2()
+            };
 
-        public string GetScore()
-        {
-            return _state.AsString();
-        }
+        public string GetScore() => _state.AsString();
     }
 
     internal class GameState
