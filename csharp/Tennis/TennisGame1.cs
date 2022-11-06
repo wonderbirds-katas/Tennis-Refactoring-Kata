@@ -46,28 +46,18 @@ namespace Tennis
             _player2Points = player2Points;
         }
 
-        public IGameState AddPointForPlayer1()
-        {
-            var nextPlayer1Points = _player1Points + 1;
+        public IGameState AddPointForPlayer1() => CreateStateWithPoints(_player1Points + 1, _player2Points);
 
-            if (IsTie(nextPlayer1Points, _player2Points))
+        public IGameState AddPointForPlayer2() => CreateStateWithPoints(_player1Points, _player2Points + 1);
+
+        private IGameState CreateStateWithPoints(int player1Points, int player2Points)
+        {
+            if (IsTie(player1Points, player2Points))
             {
-                return new Tie(nextPlayer1Points);
+                return new Tie(player1Points);
             }
 
-            return new GameState(nextPlayer1Points, _player2Points);
-        }
-
-        public IGameState AddPointForPlayer2()
-        {
-            var nextPlayer2Points = _player2Points + 1;
-
-            if (IsTie(_player1Points, nextPlayer2Points))
-            {
-                return new Tie(nextPlayer2Points);
-            }
-
-            return new GameState(_player1Points, nextPlayer2Points);
+            return new GameState(player1Points, player2Points);
         }
 
         public string AsString()
