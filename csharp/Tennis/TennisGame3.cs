@@ -6,8 +6,7 @@ namespace Tennis
         private int _score1;
         private string _name1;
         private string _name2;
-        private readonly string[] _scoreStrings = { "Love", "Fifteen", "Thirty", "Forty" };
-        
+
         public TennisGame3(string player1Name, string player2Name)
         {
             _name1 = player1Name;
@@ -32,7 +31,9 @@ namespace Tennis
 
         private string ScoreAsString(int score)
         {
-            return _scoreStrings[score];
+            string[] scoreStrings = { "Love", "Fifteen", "Thirty", "Forty" };
+
+            return scoreStrings[score];
         }
 
         public void WonPoint(string playerName)
