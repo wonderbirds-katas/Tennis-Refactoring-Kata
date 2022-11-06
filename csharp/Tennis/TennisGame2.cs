@@ -24,13 +24,7 @@ namespace Tennis
             }
             if (p2point > 0 && p1point == 0)
             {
-                if (p2point == 1)
-                    p2res = "Fifteen";
-                if (p2point == 2)
-                    p2res = "Thirty";
-                if (p2point == 3)
-                    p2res = "Forty";
-
+                p2res = ScoreAsString(p2point);
                 p1res = "Love";
                 score = p1res + "-" + p2res;
             }
