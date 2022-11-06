@@ -18,13 +18,7 @@ namespace Tennis
 
             if (p1point > 0 && p2point == 0)
             {
-                if (p1point == 1)
-                    score = "Fifteen";
-                if (p1point == 2)
-                    score = "Thirty";
-                if (p1point == 3)
-                    score = "Forty";
-
+                score = ScoreAsString(p1point);
                 p2res = "Love";
                 p1res = score;
                 score = p1res + "-" + p2res;
@@ -94,6 +88,7 @@ namespace Tennis
                 0 => "Love",
                 1 => "Fifteen",
                 2 => "Thirty",
+                3 => "Forty",
                 _ => ""
             };
 
