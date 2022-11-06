@@ -70,7 +70,7 @@ namespace Tennis
         public string AsString()
         {
             if (IsDeuce()) return "Deuce";
-            if (IsTie()) return ScoreAsString(_player1Points) + "-" + "All";
+            if (IsTie(_player1Points, _player2Points)) return ScoreAsString(_player1Points) + "-" + "All";
             if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
 
             return ScoreAsString(_player1Points) + "-" + ScoreAsString(_player2Points);
@@ -78,7 +78,7 @@ namespace Tennis
 
         private bool IsAdvantageOrWin() => _player1Points >= 4 || _player2Points >= 4;
 
-        private bool IsTie() => _player1Points == _player2Points;
+        private bool IsTie(int player1Points, int player2Points) => player1Points == player2Points;
 
         private bool IsDeuce() => _player1Points == _player2Points && _player1Points > 2;
 
