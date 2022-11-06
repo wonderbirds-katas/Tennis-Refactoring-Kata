@@ -20,13 +20,11 @@ namespace Tennis
             {
                 return (_score1 == _score2) ? ScoreAsString(_score1) + "-All" : ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
             }
-            else
-            {
-                if (_score1 == _score2)
-                    return "Deuce";
-                s = _score1 > _score2 ? _name1 : _name2;
-                return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + s : "Win for " + s;
-            }
+
+            if (_score1 == _score2)
+                return "Deuce";
+            s = _score1 > _score2 ? _name1 : _name2;
+            return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + s : "Win for " + s;
         }
 
         private string ScoreAsString(int score)
