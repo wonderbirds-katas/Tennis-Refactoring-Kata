@@ -16,11 +16,11 @@ namespace Tennis
         public string GetScore()
         {
             if (IsTie()) return ScoreAsString(_score1) + "-All";
-            if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6) && (_score1 != _score2))
-                return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
             if (_score1 == _score2 && _score1 + _score2 >= 6)
                 return "Deuce";
-            
+            if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6) && (_score1 != _score2))
+                return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
+
             var leadPlayerName = _score1 > _score2 ? _name1 : _name2;
             
             if ((_score1 - _score2) * (_score1 - _score2) == 1)
