@@ -24,18 +24,18 @@ namespace Tennis
 
             return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
         }
-
-        private bool IsWinPlayer1() => _score1 >= 4 && _score1 - _score2 >= 2;
         
-        private bool IsWinPlayer2() => _score2 >= 4 && _score2 - _score1 >= 2;
-        
-        private bool IsAdvantagePlayer1() => _score1 >= 4 && _score1 - _score2 == 1;
-
-        private bool IsAdvantagePlayer2() => _score2 >= 4 && _score2 - _score1 == 1;
-
         private bool IsTie() => _score1 == _score2 && _score1 <= 2;
 
         private bool IsDeuce() => _score1 == _score2 && _score1 > 2;
+
+        private bool IsAdvantagePlayer1() => _score1 >= 4 && _score1 - _score2 == 1;
+
+        private bool IsAdvantagePlayer2() => _score2 >= 4 && _score2 - _score1 == 1;
+        
+        private bool IsWinPlayer1() => _score1 >= 4 && _score1 - _score2 >= 2;
+        
+        private bool IsWinPlayer2() => _score2 >= 4 && _score2 - _score1 >= 2;
 
         private static string ScoreAsString(int score) =>
             score switch
