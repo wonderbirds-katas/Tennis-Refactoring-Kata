@@ -22,12 +22,12 @@ namespace Tennis
 
             if (_score1 == _score2)
                 return "Deuce";
-            string s;
-            s = _score1 > _score2 ? _name1 : _name2;
+            string leadPlayerName;
+            leadPlayerName = _score1 > _score2 ? _name1 : _name2;
             if ((_score1 - _score2) * (_score1 - _score2) == 1)
-                return "Advantage " + s;
+                return "Advantage " + leadPlayerName;
             else
-                return "Win for " + s;
+                return "Win for " + leadPlayerName;
         }
 
         private string ScoreAsString(int score)
