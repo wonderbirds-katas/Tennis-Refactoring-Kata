@@ -5,6 +5,14 @@ namespace Tennis
         private int _score1;
         private int _score2;
 
+        public void WonPoint(string player)
+        {
+            if (player == "player1")
+                _score1++;
+            else
+                _score2++;
+        }
+
         public string GetScore()
         {
             if (IsTie()) return ScoreAsString(_score1) + "-All";
@@ -38,15 +46,6 @@ namespace Tennis
                 3 => "Forty",
                 _ => ""
             };
-
-        public void WonPoint(string player)
-        {
-            if (player == "player1")
-                _score1++;
-            else
-                _score2++;
-        }
-
     }
 }
 
