@@ -34,12 +34,6 @@ namespace Tennis
                 Player2Points = Player2Points + 1
             };
 
-        private bool IsAdvantageOrWin() => Player1Points >= 4 || Player2Points >= 4;
-
-        private bool IsTie() => Player1Points == Player2Points;
-
-        private bool IsDeuce() => Player1Points == Player2Points && Player1Points > 2;
-
         public string AsString()
         {
             if (IsDeuce()) return "Deuce";
@@ -48,7 +42,13 @@ namespace Tennis
 
             return ScoreAsString(Player1Points) + "-" + ScoreAsString(Player2Points);
         }
-        
+
+        private bool IsAdvantageOrWin() => Player1Points >= 4 || Player2Points >= 4;
+
+        private bool IsTie() => Player1Points == Player2Points;
+
+        private bool IsDeuce() => Player1Points == Player2Points && Player1Points > 2;
+
         private string AdvantageOrWinnerAsString() =>
             (Player1Points - Player2Points) switch
             {
