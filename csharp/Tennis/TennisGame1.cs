@@ -34,6 +34,19 @@ namespace Tennis
         public string AsString() => _points.AsString() + "-" + "All";
     }
 
+    internal class Deuce : IGameState
+    {
+        private readonly int _points;
+
+        public Deuce(int points) => _points = points;
+
+        public IGameState AddPointForPlayer1() => new GameState(_points + 1, _points);
+
+        public IGameState AddPointForPlayer2() => new GameState(_points, _points + 1);
+
+        public string AsString() => "Deuce";
+    }
+
     internal class GameState : IGameState
     {
         private readonly int _player1Points;
@@ -52,17 +65,14 @@ namespace Tennis
 
         private IGameState CreateStateWithPoints(int player1Points, int player2Points)
         {
-            if (IsTie(player1Points, player2Points))
-            {
-                return new Tie(player1Points);
-            }
+            if (IsTie(player1Points, player2Points)) return new Tie(player1Points);
+            if (IsDeuce(player1Points, player2Points)) return new Deuce(player1Points);
 
             return new GameState(player1Points, player2Points);
         }
 
         public string AsString()
         {
-            if (IsDeuce(_player1Points, _player2Points)) return "Deuce";
             if (IsAdvantageOrWin()) return AdvantageOrWinnerAsString();
 
             return _player1Points.AsString() + "-" + _player2Points.AsString();
