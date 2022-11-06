@@ -31,11 +31,8 @@ namespace Tennis
             return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
         }
 
-        private string LeadPlayerName()
-        {
-            return _score1 > _score2 ? _name1 : _name2;
-        }
-        
+        private string LeadPlayerName() => _score1 > _score2 ? _name1 : _name2;
+
         private bool IsTie() => _score1 < 4 && _score2 < 4 && _score1 + _score2 < 6 && _score1 == _score2;
 
         private bool IsDeuce() => _score1 == _score2 && _score1 + _score2 >= 6;
