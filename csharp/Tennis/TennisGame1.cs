@@ -2,13 +2,13 @@ namespace Tennis
 {
     public class TennisGame1 : ITennisGame
     {
-        private readonly GameState _state = new();
+        private GameState _state = new();
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
             {
-                _state.AddPointForPlayer1();
+                _state = _state.AddPointForPlayer1();
             }
             else
             {
@@ -47,14 +47,16 @@ namespace Tennis
 
     internal class GameState
     {
-        public int Player1Points { get; private set; }
+        public int Player1Points { get; private init; }
 
         public int Player2Points { get; private set; }
 
-        public void AddPointForPlayer1()
-        {
-            Player1Points++;
-        }
+        public GameState AddPointForPlayer1() =>
+            new()
+            {
+                Player1Points = Player1Points + 1,
+                Player2Points = Player2Points
+            };
 
         public void AddPointForPlayer2()
         {
