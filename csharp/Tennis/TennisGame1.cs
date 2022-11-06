@@ -15,8 +15,8 @@ namespace Tennis
 
         public string GetScore()
         {
-            if (IsDeuce()) return "Deuce";
             if (IsTie()) return ScoreAsString(m_score1) + "-" + "All";
+            if (IsDeuce()) return "Deuce";
             if (IsAdvantagePlayer1()) return "Advantage player1";
             if (IsAdvantagePlayer2()) return "Advantage player2";
             if (IsWinPlayer1()) return "Win for player1";
@@ -33,7 +33,7 @@ namespace Tennis
 
         private bool IsAdvantagePlayer2() => m_score2 >= 4 && m_score2 - m_score1 == 1;
 
-        private bool IsTie() => m_score1 == m_score2;
+        private bool IsTie() => m_score1 == m_score2 && m_score1 <= 2;
 
         private bool IsDeuce() => m_score1 == m_score2 && m_score1 > 2;
 
