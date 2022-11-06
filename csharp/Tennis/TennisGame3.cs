@@ -15,7 +15,6 @@ namespace Tennis
 
         public string GetScore()
         {
-            string s;
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6) && (_score1 == _score2))
                 return ScoreAsString(_score1) + "-All";
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6) && (_score1 != _score2))
@@ -23,6 +22,7 @@ namespace Tennis
 
             if (_score1 == _score2)
                 return "Deuce";
+            string s;
             s = _score1 > _score2 ? _name1 : _name2;
             if ((_score1 - _score2) * (_score1 - _score2) == 1)
                 return "Advantage " + s;
