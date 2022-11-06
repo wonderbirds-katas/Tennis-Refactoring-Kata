@@ -13,6 +13,14 @@ namespace Tennis
             _name2 = player2Name;
         }
 
+        public void WonPoint(string playerName)
+        {
+            if (playerName == "player1")
+                _score1 += 1;
+            else
+                _score2 += 1;
+        }
+
         public string GetScore()
         {
             if (IsTie()) return ScoreAsString(_score1) + "-All";
@@ -23,32 +31,24 @@ namespace Tennis
             return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
         }
 
-        private bool IsWin() => _score1 >= 4 || _score2 >= 4 || _score1 + _score2 >= 6 || _score1 == _score2;
-
         private string LeadPlayerName()
         {
             return _score1 > _score2 ? _name1 : _name2;
         }
-
-        private bool IsAdvantage() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) == 1;
+        
+        private bool IsTie() => _score1 < 4 && _score2 < 4 && _score1 + _score2 < 6 && _score1 == _score2;
 
         private bool IsDeuce() => _score1 == _score2 && _score1 + _score2 >= 6;
 
-        private bool IsTie() => _score1 < 4 && _score2 < 4 && _score1 + _score2 < 6 && _score1 == _score2;
+        private bool IsAdvantage() => (_score1 >= 4 || _score2 >= 4) && (_score1 - _score2) * (_score1 - _score2) == 1;
+        
+        private bool IsWin() => _score1 >= 4 || _score2 >= 4 || _score1 + _score2 >= 6 || _score1 == _score2;
 
         private string ScoreAsString(int score)
         {
             string[] scoreStrings = { "Love", "Fifteen", "Thirty", "Forty" };
 
             return scoreStrings[score];
-        }
-
-        public void WonPoint(string playerName)
-        {
-            if (playerName == "player1")
-                _score1 += 1;
-            else
-                _score2 += 1;
         }
     }
 }
