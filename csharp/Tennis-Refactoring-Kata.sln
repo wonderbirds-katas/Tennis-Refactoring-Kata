@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tennis", "Tennis\Tennis.csproj", "{4257EA3A-E7D8-45A9-B865-B632AAC1F9EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tennis", "hole1\Tennis\Tennis.csproj", "{4257EA3A-E7D8-45A9-B865-B632AAC1F9EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tennis.Tests", "Tennis.Tests\Tennis.Tests.csproj", "{173B2D39-AEB3-4B75-B0B6-D4B09997F65C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tennis.Tests", "hole1\Tennis.Tests\Tennis.Tests.csproj", "{173B2D39-AEB3-4B75-B0B6-D4B09997F65C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hole1", "hole1", "{AA4D2862-C5B6-44A6-8128-17DC3D43E9A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,5 +46,9 @@ Global
 		{173B2D39-AEB3-4B75-B0B6-D4B09997F65C}.Release|x64.Build.0 = Release|Any CPU
 		{173B2D39-AEB3-4B75-B0B6-D4B09997F65C}.Release|x86.ActiveCfg = Release|Any CPU
 		{173B2D39-AEB3-4B75-B0B6-D4B09997F65C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4257EA3A-E7D8-45A9-B865-B632AAC1F9EB} = {AA4D2862-C5B6-44A6-8128-17DC3D43E9A3}
+		{173B2D39-AEB3-4B75-B0B6-D4B09997F65C} = {AA4D2862-C5B6-44A6-8128-17DC3D43E9A3}
 	EndGlobalSection
 EndGlobal
