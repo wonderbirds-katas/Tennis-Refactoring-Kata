@@ -23,7 +23,6 @@ namespace Tennis
 
         public string GetScore()
         {
-            string s;
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6))
             {
                 return (_score1 == _score2) ? ScoreAsString(_score1) + "-All" : ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
@@ -32,8 +31,7 @@ namespace Tennis
             {
                 if (_score1 == _score2)
                     return "Deuce";
-                s = LeadPlayerName();
-                return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + s : "Win for " + s;
+                return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + LeadPlayerName() : "Win for " + LeadPlayerName();
             }
         }
 
