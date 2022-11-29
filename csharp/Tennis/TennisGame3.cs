@@ -30,7 +30,10 @@ namespace Tennis
 
             if (_score1 == _score2)
                 return "Deuce";
-            return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + LeadPlayerName() : "Win for " + LeadPlayerName();
+            if ((_score1 - _score2) * (_score1 - _score2) == 1)
+                return "Advantage " + LeadPlayerName();
+            else
+                return "Win for " + LeadPlayerName();
         }
 
         private string LeadPlayerName()
