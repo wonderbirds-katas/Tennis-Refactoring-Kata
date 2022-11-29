@@ -25,11 +25,15 @@ namespace Tennis
         {
             if (IsTie()) return ScoreAsString(_score1) + "-All";
             if (IsDeuce()) return "Deuce";
-            if ((_score1 - _score2) * (_score1 - _score2) == 1 && (_score1 >= 4 || _score2 >= 4))
-                return "Advantage " + LeadPlayerName();
+            if (IsAdvantage()) return "Advantage " + LeadPlayerName();
             if (_score1 < 4 && _score2 < 4 && _score1 + _score2 < 6 && _score1 != _score2)
                 return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
             return "Win for " + LeadPlayerName();
+        }
+
+        private bool IsAdvantage()
+        {
+            return (_score1 - _score2) * (_score1 - _score2) == 1 && (_score1 >= 4 || _score2 >= 4);
         }
 
         private bool IsDeuce()
