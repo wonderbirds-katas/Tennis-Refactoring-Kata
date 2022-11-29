@@ -27,7 +27,7 @@ namespace Tennis
             string s;
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6))
             {
-                s = ScoreAsString();
+                s = ScoreAsString(_score1);
                 return (_score1 == _score2) ? s + "-All" : s + "-" + _scoreStrings[_score2];
             }
             else
@@ -39,9 +39,9 @@ namespace Tennis
             }
         }
 
-        private string ScoreAsString()
+        private string ScoreAsString(int score)
         {
-            return _scoreStrings[_score1];
+            return _scoreStrings[score];
         }
     }
 }
