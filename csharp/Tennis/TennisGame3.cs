@@ -32,9 +32,14 @@ namespace Tennis
             {
                 if (_score1 == _score2)
                     return "Deuce";
-                s = _score1 > _score2 ? _name1 : _name2;
+                s = LeadPlayerName();
                 return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + s : "Win for " + s;
             }
+        }
+
+        private string LeadPlayerName()
+        {
+            return _score1 > _score2 ? _name1 : _name2;
         }
 
         private string ScoreAsString(int score)
