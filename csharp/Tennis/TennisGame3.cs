@@ -27,12 +27,10 @@ namespace Tennis
             {
                 return (_score1 == _score2) ? ScoreAsString(_score1) + "-All" : ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
             }
-            else
-            {
-                if (_score1 == _score2)
-                    return "Deuce";
-                return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + LeadPlayerName() : "Win for " + LeadPlayerName();
-            }
+
+            if (_score1 == _score2)
+                return "Deuce";
+            return ((_score1 - _score2) * (_score1 - _score2) == 1) ? "Advantage " + LeadPlayerName() : "Win for " + LeadPlayerName();
         }
 
         private string LeadPlayerName()
