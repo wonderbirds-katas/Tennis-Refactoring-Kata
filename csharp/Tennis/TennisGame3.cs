@@ -6,6 +6,7 @@ namespace Tennis
         private int _score1;
         private readonly string _name1;
         private readonly string _name2;
+        private readonly string[] _scoreStrings = new[] { "Love", "Fifteen", "Thirty", "Forty" };
 
         public TennisGame3(string player1Name, string player2Name)
         {
@@ -26,9 +27,8 @@ namespace Tennis
             string s;
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6))
             {
-                string[] p = { "Love", "Fifteen", "Thirty", "Forty" };
-                s = p[_score1];
-                return (_score1 == _score2) ? s + "-All" : s + "-" + p[_score2];
+                s = _scoreStrings[_score1];
+                return (_score1 == _score2) ? s + "-All" : s + "-" + _scoreStrings[_score2];
             }
             else
             {
