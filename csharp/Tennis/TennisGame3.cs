@@ -25,7 +25,10 @@ namespace Tennis
         {
             if ((_score1 < 4 && _score2 < 4) && (_score1 + _score2 < 6))
             {
-                return (_score1 == _score2) ? ScoreAsString(_score1) + "-All" : ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
+                if (_score1 == _score2)
+                    return ScoreAsString(_score1) + "-All";
+                else
+                    return ScoreAsString(_score1) + "-" + ScoreAsString(_score2);
             }
 
             if (_score1 == _score2)
